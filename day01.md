@@ -6,6 +6,12 @@
 
 ## JavaScript: The Good Stuff
 
+### Closures
+
+### Prototypes
+
+### `this`
+
 ## ES2015: The Future is Now
 
 ### Big Changes
