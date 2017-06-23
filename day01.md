@@ -97,7 +97,7 @@ This will return `15`. Why?
 
 These three methods (`forEach`, `map`, and `reduce`) are currently trendy in JavaScript, partly because JavaScript is going through a functional programming moment, but also because these methods are significantly clearer than their iterative equivalent.
 
-You can see what I mean by looking at `day01/iterative-examples.js` which contains iterative versions of our functional examples.
+You can see what I mean by looking at [`day01/iterative-examples.js`](day01/iterative-examples.js) which contains iterative versions of our functional examples.
 
 ### Closures
 
