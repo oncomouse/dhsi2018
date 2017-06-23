@@ -150,7 +150,7 @@ foo2();
 console.log(foobar);
 ```
 
-What is the output? See it by running [`node day01/closure-scope.js`].
+What is the output? See it by running [`node day01/closure-scope.js`](day01/closure-scope.js).
 
 Why is the output like that?
 
