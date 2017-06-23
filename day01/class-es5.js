@@ -33,8 +33,8 @@ Player.prototype.sayHello = function() {
 }
 
 let p1 = new Player({
-	name: 'Jim',
-	class: 'Thief'
+	name: 'Diana',
+	class: 'Rogue'
 });
 let p2 = new Player({
 	name: 'Andrew',

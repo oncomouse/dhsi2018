@@ -8,6 +8,26 @@
 
 ### Closures
 
+In JavaScript, anything contained in `{` and `}` is called a *closure*. Closures are complete data worlds. Anything variable is *declared* inside a closure will exist inside that closure for as long as that closure exists.
+
+Closures can be nested. Any closure that is inside of another closure (ie. a *child* inside a *parent*) will have access within the child closure to the life of the parent closure.
+
+Consider the following code:
+
+```javascript
+
+function makeSayHello(name) {
+	name = name || 'Default Name'; // Default parameter
+	return function() {
+		return 'Hello, ' + name;
+	}
+}
+
+var helloAnna = makeSayHello('Anna');
+var helloRose = makeSayHello('Rose')
+
+```
+
 ### Prototypes
 
 ### `this`
@@ -119,8 +139,8 @@ We can create players and interact with them:
 
 ```javascript
 let p1 = new Player({
-	name: 'Jim',
-	class: 'Thief'
+	name: 'Diana',
+	class: 'Rogue'
 });
 let p2 = new Player({
 	name: 'Andrew',
@@ -174,6 +194,6 @@ Player.prototype.sayHello = function() {
 
 Run `node day01/class-es5.js` (OR `babel-node day01/class-es5.js`).
 
-The *main* reason for ES6 classes is because they are slightly simpler to write.
+The *main* reason for ES6 classes is because they are slightly simpler to write. This is called *syntactical sugar*. Most of the new JavaScript is sugar.
 
 However, as we will talk about later in the course, classes set up inheritance, which is important to React. But that's for later.
