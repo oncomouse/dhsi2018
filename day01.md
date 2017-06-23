@@ -97,6 +97,8 @@ This will return `15`. Why?
 
 These three methods (`forEach`, `map`, and `reduce`) are currently trendy in JavaScript, partly because JavaScript is going through a functional programming moment, but also because these methods are significantly clearer than their iterative equivalent.
 
+You can see what I mean by looking at `day01/iterative-examples.js` which contains iterative versions of our functional examples.
+
 ### Closures
 
 In JavaScript, anything contained in `{` and `}` is called a *closure*. Closures are complete data worlds. Anything variable is *declared* inside a closure will exist inside that closure for as long as that closure exists.
