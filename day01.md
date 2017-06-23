@@ -14,6 +14,8 @@
 
 ## ES2015: The Future is Now
 
+### Babel: Use the Future Today
+
 ### Big Changes
 
 Consider this example:
@@ -67,4 +69,109 @@ What changes?
 
 Most of these changes are cosmetic and designed to make the language easier to use. They also exist to more strongly emphasize JavaScript's functional nature.
 
-### Babel: Use the Future Today
+### Classes
+
+We talked about JavaScript's prototype-based object-oriented approach (and why it's so cool), but ES2015 introduces the more commonly used (in terms of other programming languages) class-based approach to object-oriented programming.
+
+Where, in JavaScript, a type of data structure, such as Array, is defined as a prototype object that is cloned with each new array created (such that editing `Array.prototype` changes all arrays that exist in our program), a class defines how an object operates but is not itself an object. This matters a lot for computer scientists, but for our purposes, it's worth mentioning because [React](https://facebook.github.io/react/) uses classes.
+
+Here's a class:
+
+```javascript
+class Player {
+	static defaultParams = {
+		name: 'Foo Bar',
+		class: 'Wizard'
+	}
+	static classes = [
+		'Barbarian',
+		'Bard',
+		'Cleric',
+		'Druid',
+		'Fighter',
+		'Mage',
+		'Wizard',
+		'Monk',
+		'Mystic',
+		'Paladin',
+		'Ranger',
+		'Sorcerer',
+		'Thief',
+		'Rogue',
+		'Warlock'
+	];
+	static validClass(charClass) {
+		return this.classes.includes(charClass);
+	}
+	constructor(params) {
+		this.params = Object.assign({}, this.constructor.defaultParams,  params);
+		if(!this.constructor.validClass(this.params.class)) {
+			this.params.class = this.constructor.defaultParams.class;
+		}
+	}
+	sayHello() {
+		return `Hello, my name is ${this.params.name}. I'm a ${this.params.class}!`;
+	}
+}
+```
+
+We can create players and interact with them:
+
+```javascript
+let p1 = new Player({
+	name: 'Jim',
+	class: 'Thief'
+});
+let p2 = new Player({
+	name: 'Andrew',
+	class: 'Digital Humanist'
+});
+console.log(p1.sayHello());
+console.log(p2.sayHello());
+```
+
+What will this produce? Run `babel-node day01/class.js` to find out.
+
+#### A Note About Sugar
+
+Of course, we can implement our `Player` class in ES5 just fine as a prototype to be cloned:
+
+```javascript
+var Player = function(params) {
+	this.params = Object.assign({}, Player.defaultParams, params);
+	if(!Player.validClass(this.params.class)) {
+		this.params.class = Player.defaultParams.class;
+	}
+}
+Player.defaultParams = {
+	name: 'Foo Bar',
+	class: 'Wizard'
+}
+Player.classes = [
+	'Barbarian',
+	'Bard',
+	'Cleric',
+	'Druid',
+	'Fighter',
+	'Mage',
+	'Wizard',
+	'Monk',
+	'Mystic',
+	'Paladin',
+	'Ranger',
+	'Sorcerer',
+	'Thief',
+	'Rogue',
+	'Warlock'
+];
+Player.validClass = function(charClass) {
+	return this.classes.includes(charClass);
+}
+Player.prototype.sayHello = function() {
+	return `Hello, my name is ${this.params.name}. I'm a ${this.params.class}!`;
+}
+```
+
+The *main* reason for ES6 classes is because they are slightly simpler to write.
+
+However, as we will talk about later in the course, classes set up inheritance, which is important to React. But that's for later.
