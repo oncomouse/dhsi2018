@@ -8,9 +8,10 @@ fs.readFile(__dirname + '/cv.json', function(err,data){
 	
 	data.previousEmployment.push({
 		institution: 'Pennsylvania State University',
-		title: 'Fixed-Term Lecturer',
+		title: 'Graduate Student',
 		startYear: 2005,
 		endYear: 2011
 	});
-	fs.writeFile(__dirname + '/cv.json', JSON.stringify(data));
+	data = JSON.stringify(data,null,2); // ,null,2 causes JSON to format in a human-readable way (that takes up more space and shouldn't be used unless people are actually reading this JSON).
+	fs.writeFile(__dirname + '/cv.json', data, function(err,data) {});
 })
