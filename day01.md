@@ -241,8 +241,6 @@ What is the output? See it by running [`node day01/closure-scope.js`](day01/clos
 
 Why is the output like that?
 
-### `this`
-
 ### Prototypes
 
 JavaScript is intended as a multiple-paradigm programming language. You can use it to do [iterative programming](https://en.wikipedia.org/wiki/Iteration) (as our examples above have been). You can use it do to [functional programming](https://en.wikipedia.org/wiki/Functional_programming) (we saw some of this we the three array methods, but we'll be talking more about this when we get to Redux).
@@ -267,7 +265,11 @@ testArray.add1();
 console.log(testArray);
 ```
 
-This is useful for a variety of reasons, but one that is especially useful is polyfilling: the practice of implementing new member functions for older versions of JavaScript. For instance, `forEach` was added to Arrary's `prototype` in browser implementing JavaScript version 5. To add it to older browsers, you could add [this code from Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/ForEach#Polyfill):
+What does `this` mean here? What do you think?
+
+`this` is a magic word in JavaScript. In the context of JavaScript's object-oriented prototype model, `this` is the current object being manipulated. Every function has a `this`, which is usually `undefined`, except in the case of objects. You can also use a special function `.bind()` (which is part of function's prototype (because everything is data in JavaScript)) to set `this` for a function that normally would not have `this` set (this will matter *a lot* when we get to React).
+
+Being able to extend `prototype` is useful for a variety of reasons, but one that is especially useful is polyfilling: the practice of implementing new member functions for older versions of JavaScript. For instance, `forEach` was added to Arrary's `prototype` in browser implementing JavaScript version 5. To add it to older browsers, you could add [this code from Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/ForEach#Polyfill):
 
 ```javascript
 // Production steps of ECMA-262, Edition 5, 15.4.4.18
@@ -347,9 +349,21 @@ var Record = function(firstName, lastName, occupation) {
 }
 ```
 
-Whenever `Record` is invoked, we save the three parameters to `this` so that they can be accessed later. We would do this by running `var myRecord = new Record('Samantha', 'Bright', 'Programmer');`. The `new` operator clones Record into myRecord.
+Whenever `Record` is invoked with the special keyword `new`, we save the three parameters to `this` so that they can be accessed later. Our function `Record` is called a *constructor* and it is building an object that could be annotated in JSON as:
 
-If we want to make `Record` do something, we have to modify it's prototype:
+```json
+{
+	"firstName": "First",
+	"lastName": "Last",
+	"occupation": "Occupation"
+}
+```
+
+If we ran: `new Record('First', 'Last', 'Occupation')`.
+
+We would do create a more interesting record by running `var myRecord = new Record('Samantha', 'Bright', 'Programmer');`.
+
+If we want to make `Record` and (any Records we create) do something, we have to modify it's prototype:
 
 ```
 Record.prototype.introduction = function() {
