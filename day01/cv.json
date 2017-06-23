@@ -1,0 +1,22 @@
+{
+	"name": "Andrew Pilsch",
+	"currentEmployment": {
+		"title": "Assistant Professor of English",
+		"institution": "Texas A&M University",
+		"startYear": 2015
+	},
+	"previousEmployment": [
+		{
+			"institution": "Arizona State University",
+			"title": "Assistant Professor of English & Technical Communication",
+			"startYear": 2012,
+			"endYear": 2015
+		},
+		{
+			"institution": "Pennsylvania State University",
+			"title": "Fixed-Term Lecturer",
+			"startYear": 2011,
+			"endYear": 2012
+		}
+	]
+}
