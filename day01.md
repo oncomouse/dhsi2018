@@ -115,7 +115,7 @@ var hello = function() {
 }
 ```
 
-The most important aspect of this is that functions can be stored in variables. And variables can be passed to other functions.
+Once a function is stored in a variable, it can be passed as a parameter to other functions:
 
 ```javascript
 var add = function (x,y) {
