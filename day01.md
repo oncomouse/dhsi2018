@@ -10,6 +10,93 @@
 
 ### Basic Data Type: Object
 
+### Warning: Pass By Reference!!!
+
+Both arrays and objects in JavaScript are passed by reference. What this means is that if you pass an object or an array to a function, the function does not get a new copy of the data in the structure. Instead, it gets a reference to the *same data* as you passed.
+
+In practice, this means that if a function changes an array or an object, the object outside the scope of the function will also change. This behavior is fine *as long as you plan for it*. Make sure you know, when using a library such as [Ramda](http://ramdajs.com/) or [Lodash](https://lodash.com/) that provide array and object manipulation functions, whether the functions change their parameters or return copies.
+
+As an example of what I mean, consider:
+
+```
+function change(array, value) {
+	array.push(value)
+}
+
+var me = ['a','b','c'];
+change(me, 'd');
+console.log(me);
+```
+
+What do you expect to be the output? 
+
+Consider this example:
+
+```
+function iWillNotChange(array, value) {
+	var localCopy = array.slice();
+	localCopy.push(value);
+	return localCopy
+}
+var me = ['a','b','c'];
+var newMe = iWillNotChange(me, 'd');
+console.log(me, newMe);
+```
+
+What happened here?
+
+Same effect with objects:
+
+```javascript
+function addBlast(object,value) {
+	var localCopy = Object.assign({},object);
+	localCopy.blast = value;
+	return localCopy;
+}
+var me = {foo: 'bar'};
+var newMe = addBlast(me, 'baz');
+console.log(me, newMe);
+```
+
+So, to copy an array use [`Array.prototype.slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Slice) with no arguments (`slice` is awesome, read up on it!). To copy an object use [`Object.assign`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) with `{}` as the first parameter.
+
+### JSON
+
+JSON is "JavaScript Object Notation" and it is an object serialization format based on the standard way of defining objects and arrays in JavaScript. Serialization is the process of taking a piece of data that is in memory, converting it to a string, and sending it by different means. It can be used to communicate between computers or between a human and a computer (as you install packages using NPM, NPM is modifying package.json, which is a serialized representation of NPM's understanding of your project).
+
+JSON is a *very* simple way to represent complex data and can be extremely readable by humans as well as machines.
+
+There are a few differences between JSON and JavaScript (because JSON is slightly stricter than JavaScript). Here is an example JSON file:
+
+```json
+{
+	"name": "Andrew Pilsch",
+	"currentEmployment": {
+		"title": "Assistant Professor of English",
+		"institution": "Texas A&M University",
+		"startYear": 2015
+	},
+	"previousEmployment": [
+		{
+			"institution": "Arizona State University",
+			"title": "Assistant Professor of English & Technical Communication",
+			"startYear": 2012,
+			"endYear": 2015
+		},
+		{
+			"institution": "Pennsylvania State University",
+			"title": "Fixed-Term Lecturer",
+			"startYear": 2011,
+			"endYear": 2012
+		}
+	]
+}
+```
+
+To load a serialized JSON object (which is a string) as JavaScript data we can manipulate, we could run `var data = JSON.parse(JSONstring)`. To serialize JavaScript data as a JSON string, run `var JSONstring = JSON.stringify(data)` (why `stringify`? I have no idea).
+
+Take a look at [`day01/json.js`](day01/json.js) and then run `node day01/json.js` to see this in action (this uses Node's filesystem methods, so it will look a little unfamiliar). Also, after you run the program, take a look at your local copy of `day01/cv.json`. It will have changed.
+
 ### Everything is a Variable
 
 Everything in JavaScript can be stored in a variable. This makes for some weird looking code, but it is extremely powerful.
