@@ -172,6 +172,8 @@ Player.prototype.sayHello = function() {
 }
 ```
 
+Run `node day01/class-es5.js` (OR `babel-node day01/class-es5.js`).
+
 The *main* reason for ES6 classes is because they are slightly simpler to write.
 
 However, as we will talk about later in the course, classes set up inheritance, which is important to React. But that's for later.
