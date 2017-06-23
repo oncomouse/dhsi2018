@@ -6,6 +6,97 @@
 
 ## JavaScript: The Good Stuff
 
+### Basic Data Type: Array
+
+### Basic Data Type: Object
+
+### Everything is a Variable
+
+Everything in JavaScript can be stored in a variable. This makes for some weird looking code, but it is extremely powerful.
+
+```javascript
+function hello() {
+	return 'Hello World!';
+}
+```
+
+Is the same as:
+
+```javascript
+var hello = function() {
+	return 'Hello World!';
+}
+```
+
+The most important aspect of this is that functions can be stored in variables. And variables can be passed to other functions.
+
+```javascript
+var add = function (x,y) {
+	return x + y;
+}
+var sub = function (x,y) {
+	return x - y;
+}
+var times = function (x,y) {
+	return x * y;
+}
+var math = function(op,x,y) {
+	return op(x,y);
+}
+
+console.log(math(add,1,2));
+console.log(math(sub,1,2));
+console.log(math(times,1,2));
+```
+
+Run `node day01/math.js` to see this in action!
+
+#### Functional Array Manipulation
+
+There is a set of operations that work on Arrays that use function-as-variables extensively. They are also ridiculously cool! The three functions are [`Array.prototype.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/ForEach), [`Array.prototype.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Map), and [`Array.prototype.reduce`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce).
+
+`Array.prototype.forEach` runs a supplied function on each member of an array. The function can accept up to three parameters: `currentValue`, `index`, and `array` (which is the whole array). As an example:
+
+```javascript
+[1,2,3,4,5].forEach(function(currentValue, index) {
+	console.log('Value #' + (index + 1) + ' of the array is: ' + currentValue);
+});
+```
+
+This will print:
+
+```
+Value #1 of the array is: 1
+Value #2 of the array is: 2
+Value #3 of the array is: 3
+Value #4 of the array is: 4
+Value #5 of the array is: 5
+```
+
+`Array.prototype.map` runs the supplied function on each member of an array and stores the returned value of the function in a new array at the same place as the passed old value. For instance:
+
+```javascript
+[1,2,3,4,5].map(function(currentValue) { 
+	return currentValue * currentValue;
+})
+```
+
+This will return the new array `[1,4,9,16,25]`. Why?
+
+Also, why is it important that I keep emphasizing this is a *new* array?
+
+`Array.prototype.reduce` takes two parameters: a function and an initial value. The function can take up to four parameters `accumulator`, `currentValue`, `index`, and `array`. `accumulator` is first set to the initial value but then will be set to the output of the function. The final value of `accumulator` is returned by `Array.prototype.reduce`. For instance:
+
+```javascript
+[1,2,3,4,5].reduce(function(accumulator, currentValue) { 
+	return accumulator + currentValue;
+}, 0)
+```
+
+This will return `15`. Why?
+
+These three methods (`forEach`, `map`, and `reduce`) are currently trendy in JavaScript, partly because JavaScript is going through a functional programming moment, but also because these methods are significantly clearer than their iterative equivalent.
+
 ### Closures
 
 In JavaScript, anything contained in `{` and `}` is called a *closure*. Closures are complete data worlds. Anything variable is *declared* inside a closure will exist inside that closure for as long as that closure exists.
@@ -15,7 +106,6 @@ Closures can be nested. Any closure that is inside of another closure (ie. a *ch
 Consider the following code:
 
 ```javascript
-
 function makeSayHello(name) {
 	name = name || 'Default Name'; // Default parameter
 	return function() {
@@ -26,9 +116,17 @@ function makeSayHello(name) {
 var helloAnna = makeSayHello('Anna');
 var helloRose = makeSayHello('Rose')
 
+console.log(helloAnna());
+console.log(helloRose());
+console.log(makeSayHello('Jane')); // Is this right?
+console.log(makeSayHello('Jane')()); // Why do we need this?
 ```
 
+Run `node day01/hello.js` to see this run!
+
 ### Prototypes
+
+JavaScript is intended as a multiple-paradigm programming language. You can use it to do [iterative programming](https://en.wikipedia.org/wiki/Iteration) (as our examples above have been). You can use it do to [functional programming](https://en.wikipedia.org/wiki/Functional_programming) (we'll be talking more about this when we get to React). 
 
 ### `this`
 
