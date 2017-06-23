@@ -126,11 +126,155 @@ console.log(makeSayHello('Jane')()); // Why do we need this?
 
 Run [`node day01/hello.js`](day01/hello.js) to see this run!
 
-### Prototypes
+#### `var` and scope (or why JavaScript will make you pull your hair out)
 
-JavaScript is intended as a multiple-paradigm programming language. You can use it to do [iterative programming](https://en.wikipedia.org/wiki/Iteration) (as our examples above have been). You can use it do to [functional programming](https://en.wikipedia.org/wiki/Functional_programming) (we'll be talking more about this when we get to React). 
+Closures are useful for trapping particular variables inside a particular scope, but to do so, the variable has to be declared. This is why the `var` keyword is *so* important to JavaScript. Writing `var` before a variable declares it as unique to that scope (ie. it won't be inherited from a broader scope). A lot of time, this is done to prevent polluting the global scope, as JavaScript programmers call it.
+
+Consider this example:
+
+```javascript
+function foo1() {
+	var foobar = 'Bar';
+	foobar += 'Baz';
+	console.log(foobar);
+}
+function foo2() {
+	foobar += 'Baz';
+	console.log(foobar);
+}
+
+var foobar = 'Foo';
+foo1();
+console.log(foobar);
+foo2();
+console.log(foobar);
+```
+
+What is the output? See it by running [`node day01/closure-scope.js`].
+
+Why is the output like that?
 
 ### `this`
+
+### Prototypes
+
+JavaScript is intended as a multiple-paradigm programming language. You can use it to do [iterative programming](https://en.wikipedia.org/wiki/Iteration) (as our examples above have been). You can use it do to [functional programming](https://en.wikipedia.org/wiki/Functional_programming) (we saw some of this we the three array methods, but we'll be talking more about this when we get to Redux).
+
+You can also use it as an [object-oriented language](https://en.wikipedia.org/wiki/Object-oriented_programming). OOP was a big deal in computer science and software engineering in the 1990s and early 2000s (its fading a bit because it was not implemented well). Perhaps you read [Alexander Galloway's misguided essay in Critical Inquiry about OOP](http://cultureandcommunication.org/galloway/pdf/Galloway,%20Poverty%20of%20Philosophy.pdf)?
+
+Anyway, because JavaScript is quirky, of course it's OOP implementation is different from how most languages do it (this will become a refrain for this course). We'll talk about how other languages due OOP in a minute, but JavaScript uses what's called "*prototypal inheritance*."
+
+In this model of OOP individual objects are derived by cloning prototypal objects that *are themselves objects*. So, for instance, when you create a new array in Javascript (`var m = [];`), you are actually cloning the `Array` object. What cloning does is copy all the properties of the prototype to the new clone.
+
+Why this matters is that later, you can edit the prototypal object's prototype property and *change all of its clones*. For instance, you could add a method to Array that added one to each value of the array:
+
+```javascript
+Array.prototype.add1 = function() {
+	for(var i = 0; i < this.length; i++) {
+		this[i] += 1;
+	}
+}
+
+var testArray = [1,2,3,4,5];
+testArray.add1();
+console.log(testArray);
+```
+
+This is useful for a variety of reasons, but one that is especially useful is polyfilling: the practice of implementing new member functions for older versions of JavaScript. For instance, `forEach` was added to Arrary's `prototype` in browser implementing JavaScript version 5. To add it to older browsers, you could add [this code from Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/ForEach#Polyfill):
+
+```javascript
+// Production steps of ECMA-262, Edition 5, 15.4.4.18
+// Reference: http://es5.github.io/#x15.4.4.18
+if (!Array.prototype.forEach) {
+
+  Array.prototype.forEach = function(callback/*, thisArg*/) {
+
+    var T, k;
+
+    if (this == null) {
+      throw new TypeError('this is null or not defined');
+    }
+
+    // 1. Let O be the result of calling toObject() passing the
+    // |this| value as the argument.
+    var O = Object(this);
+
+    // 2. Let lenValue be the result of calling the Get() internal
+    // method of O with the argument "length".
+    // 3. Let len be toUint32(lenValue).
+    var len = O.length >>> 0;
+
+    // 4. If isCallable(callback) is false, throw a TypeError exception. 
+    // See: http://es5.github.com/#x9.11
+    if (typeof callback !== 'function') {
+      throw new TypeError(callback + ' is not a function');
+    }
+
+    // 5. If thisArg was supplied, let T be thisArg; else let
+    // T be undefined.
+    if (arguments.length > 1) {
+      T = arguments[1];
+    }
+
+    // 6. Let k be 0.
+    k = 0;
+
+    // 7. Repeat while k < len.
+    while (k < len) {
+
+      var kValue;
+
+      // a. Let Pk be ToString(k).
+      //    This is implicit for LHS operands of the in operator.
+      // b. Let kPresent be the result of calling the HasProperty
+      //    internal method of O with argument Pk.
+      //    This step can be combined with c.
+      // c. If kPresent is true, then
+      if (k in O) {
+
+        // i. Let kValue be the result of calling the Get internal
+        // method of O with argument Pk.
+        kValue = O[k];
+
+        // ii. Call the Call internal method of callback with T as
+        // the this value and argument list containing kValue, k, and O.
+        callback.call(T, kValue, k, O);
+      }
+      // d. Increase k by 1.
+      k++;
+    }
+    // 8. return undefined.
+  };
+}
+```
+
+#### Implementing Custom Objects
+
+To implement a custom object using JavaScript, you define a function and store it in a variable:
+
+```javascript
+var Record = function(firstName, lastName, occupation) {
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.occupation = occupation;
+}
+```
+
+Whenever `Record` is invoked, we save the three parameters to `this` so that they can be accessed later. We would do this by running `var myRecord = new Record('Samantha', 'Bright', 'Programmer');`. The `new` operator clones Record into myRecord.
+
+If we want to make `Record` do something, we have to modify it's prototype:
+
+```
+Record.prototype.introduction = function() {
+	return 'My name is ' + this.firstName + ' ' + this.lastName + '. I work as a ' + this.occupation + '.';
+}
+```
+
+We can now call `myRecord.introduction()` to get `My name is Samantha Bright. I work as a Programmer.` returned for us.
+
+We could continue adding methods to `Record`'s `prototype` to build out our custom object, but we won't.
+
+The code for this example is [`day01/new-prototype-object.js`].
 
 ## ES2015: The Future is Now
 
