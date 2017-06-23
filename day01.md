@@ -425,7 +425,7 @@ What changes?
 		```
 	The other important thing about arrow functions is that `this` is always set to the scope equivalent of `this` (so `()=>{}` is equivalent to `function(){}.bind(this)`)
 1. **Default parameters**: you can now set a default parameter value in the function body by assigning a value (`name='person'` above). This works in old style functions, too:
-	* The following is valid ES6:
+	* The following is valid in ES2015:
 		```javascript
 		function foo(bar='baz') {
 			return 'foo ' + bar;
