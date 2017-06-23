@@ -49,7 +49,7 @@ console.log(math(sub,1,2));
 console.log(math(times,1,2));
 ```
 
-Run `node day01/math.js` to see this in action!
+Run [`node day01/math.js`](day01/math.js) to see this in action!
 
 #### Functional Array Manipulation
 
@@ -124,7 +124,7 @@ console.log(makeSayHello('Jane')); // Is this right?
 console.log(makeSayHello('Jane')()); // Why do we need this?
 ```
 
-Run `node day01/hello.js` to see this run!
+Run [`node day01/hello.js`](day01/hello.js) to see this run!
 
 ### Prototypes
 
@@ -250,7 +250,7 @@ console.log(p1.sayHello());
 console.log(p2.sayHello());
 ```
 
-What will this produce? Run `babel-node day01/class.js` to find out.
+What will this produce? Run [`babel-node day01/class.js`](day01/class.js) to find out.
 
 #### A Note About Sugar
 
@@ -292,7 +292,7 @@ Player.prototype.sayHello = function() {
 }
 ```
 
-Run `node day01/class-es5.js` (OR `babel-node day01/class-es5.js`).
+Run [`node day01/class-es5.js`](day01/class-es5.js) (OR [`babel-node day01/class-es5.js`](day01/class-es5.js)).
 
 The *main* reason for ES6 classes is because they are slightly simpler to write. This is called *syntactical sugar*. Most of the new JavaScript is sugar.
 
