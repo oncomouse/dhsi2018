@@ -401,6 +401,19 @@ const helloWorld = (name='person') => `Hello, ${name}!`;
 What changes?
 
 1. **`const`** designates variables that cannot be reassigned after they change (this is not the same as meaning they cannot change).
+	* *This is really important*: the following code is valid in ES2015:
+		```javascript
+		const arr = [1,2,3,4,5];
+		arr.push(6);
+		console.log(arr); // Will print [1,2,3,4,5,6]
+		```
+		But this is not:
+		```javascript
+		const arr = [1,2,3,4,5];
+		arr = [1,2,3,4,5,6];
+		```
+		Why?
+		In future JavaScript implementations, `const` will be a more efficient variable form (but this isn't implemented yet).
 1. **Arrow function** syntax is a concise (and more functional) way of designating a function. The general syntax is 
 	```javascript
 	(param1, param2, etc.) => {
