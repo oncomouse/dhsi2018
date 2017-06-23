@@ -1,7 +1,7 @@
 var Player = function(params) {
-	this.params = Object.assign({}, Player.defaultParams, params);
-	if(!Player.validClass(this.params.class)) {
-		this.params.class = Player.defaultParams.class;
+	this.params = Object.assign({}, this.constructor.defaultParams, params);
+	if(!this.constructor.validClass(this.params.class)) {
+		this.params.class = this.constructor.defaultParams.class;
 	}
 }
 Player.defaultParams = {

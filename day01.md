@@ -138,9 +138,9 @@ Of course, we can implement our `Player` class in ES5 just fine as a prototype t
 
 ```javascript
 var Player = function(params) {
-	this.params = Object.assign({}, Player.defaultParams, params);
-	if(!Player.validClass(this.params.class)) {
-		this.params.class = Player.defaultParams.class;
+	this.params = Object.assign({}, this.constructor.defaultParams, params);
+	if(!this.constructor.validClass(this.params.class)) {
+		this.params.class = this.constructor.defaultParams.class;
 	}
 }
 Player.defaultParams = {
