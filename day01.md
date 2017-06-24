@@ -672,3 +672,5 @@ Run [`node day01/class-es5.js`](day01/class-es5.js) (OR [`babel-node day01/class
 The *main* reason for ES6 classes is because they are slightly simpler to write. This is called *syntactical sugar*. Most of the new JavaScript is sugar.
 
 However, as we will talk about later in the course, classes set up inheritance, which is important to React. But that's for later.
+
+# Have a Great Evening!
