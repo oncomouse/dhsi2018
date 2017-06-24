@@ -536,6 +536,10 @@ What changes?
 		```javascript
 		const addThreeNumbers = (p1,p2,p3) => p1 + p2 + p3;
 		```
+	* To return an object from a one-liner, place the single line in parenthesis:
+		```javascript
+		const makeObject = (key,value) => ({[key]: value});
+		```
 	* Otherwise, JS closure syntax is used (`{`, `}`, and `return`). Example:
 		```javascript
 		const fib = n => {
