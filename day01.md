@@ -1,5 +1,12 @@
 # Day 1: Getting Started
 
+## Agenda
+
+1. [Installing Node](#installing-node)
+1. [Learning NPM](#learning-npm)
+1. [JavaScript: The Good Stuff](#javascript-the-good-stuff)
+1. [ES2015: The Future is Now](#es2015-the-future-is-now)
+
 ## Installing Node
 
 Node.js is a hugely important advance in the development of JavaScript as a serious language for building software. We will talk more about why that is tomorrow, but for now, know that Node is a JavaScript interpreter (like the one in your web browser) that runs on the command line. We will be using Node throughout the class to manage our software and to assemble some of the more complex projects we will be working with later in the class.
@@ -477,6 +484,14 @@ The code for this example is [`day01/new-prototype-object.js`].
 ## ES2015: The Future is Now
 
 ### Babel: Use the Future Today
+
+Though ES2015 is not completely implemented in web browsers, you can still write code using the new features of this language, thanks to a project called [Babel](https://babeljs.io/). Babel is a "transpiler" (portmanteau of "translating compiler") that translates ES2015 into ES5 code that runs in the modern browser. If you want to read an academic article about this stuff, I have an article in *Amodern* about Babel and ES2015 transpilation.
+
+If you ran `npm install` back at the beginning of today, you already have a working Babel environment in this repository. Take a look at [`.babelrc`](.babelrc).
+
+However, to run the Babel examples in this section, you will need a special version of Node (called "babel-node") to run them. To install this command on your system, run `npm install -g babel-cli` in your command line. The `-g` switch to `npm install` says to install the library globally. This makes any binaries the library installs (in this case `babel-node`) available in the global $PATH for your shell, so you can run them from the command line.
+
+(Normally, these binaries are all installed in `node_modules/.bin`, which may become useful in the future).
 
 ### Big Changes
 
