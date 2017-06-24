@@ -4,11 +4,80 @@
 
 ## Learning NPM
 
+One major feature of Node.js is NPM (which is an independent repository not officially run by the Node.js team). NPM ("Node Package Manager") makes it easier to install a variety of software packages for Node.
+
+The version of this course you downloaded from GitHub contains a rudimentary NPM environment ([`package.json`](package.json)). Let's look at it now.
+
+The main thing we will be doing in this class is using NPM to manage packages. To get started, run `npm install` in the repository you downloaded from GitHub.
+
+You just installed the packages required to run the examples for today (other days will have their own NPM environments, when we get to more complex software).
+
+If you ever want to install a package in your project, you can run `npm install <package-name>`. Packages can be searched at [NPM's website](https://www.npmjs.com/).
+
 ## JavaScript: The Good Stuff
 
 ### Basic Data Type: Array
 
+An array is a sequential, number-indexed data structure. It's essentially an ordered list of data. Arrays are written in JavaScript surrounded by square brackets (`[` and `]`), with the values in the array separated by commas. So:
+
+```javascript
+var myNumberArray = [1,2,3,4];
+var myStringArray = ['a','b','c','d'];
+var myMixedArray = [1,true,12.3,'b'];
+```
+
+Arrays can be accessed by following their variable name with the index of the element you want to access (arrays indices start with 0). So:
+
+```javascript
+myNumberArray[2] === 3; // true
+myStringArray[0] === 'a'; // true
+myMixedArray[3] === 'b'; // true
+```
+
+Arrays can be looped using a `for` loop:
+
+```javascript
+for(var i=0; i < myNumberArray.length; i++) {
+	console.log(myNumberArray[i]);
+}
+```
+
+However, there is a move afoot in JavaScript to stop writing `for`, `while` and other iterative looping structures (we will talk about why and what is replacing them in a bit).
+
+Check out the [Mozilla Developer Network to learn more about all the methods you can use on `Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
 ### Basic Data Type: Object
+
+Objects are the other foundational data structure in JavaScript. Where an array is indexed by a sequential number, objects are indexed by either a number or a string. As such, they can be considered as a collection of key/value pairs.
+
+Objects are declared by surrounded curly braces (`{` and `}`), with key/value pairs written indicated in the form `<key>:<value>` and each pair separated by a comma. So:
+	
+```javascript
+var myObject = {
+	foo: 'bar',
+	bar: 'baz',
+	baz: 1,
+	biz: { // You can nest objects!
+		my: 1,
+		name: 2,
+		is: 3,
+		object: 4
+	},
+	array: [1,2,3,4] // You can also store arrays!
+}
+```
+
+An object can be accessed in two ways: in the form `<variable>.<key>` or `<variable>[<key>]`. Here's an example to clarify from the above:
+	
+```javascript
+myObject.foo === 'bar'; // true
+myObject['bar'] === 'baz'; // true
+myObject.baz === myObject['baz']; // true
+```
+
+Why do we need both forms? When would we use the more complicated one with brackets?
+
+Check out the [Mozilla Developer Network to learn more about all the methods you can use on `Object`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 ### Warning: Pass By Reference!!!
 
