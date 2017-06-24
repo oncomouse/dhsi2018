@@ -2,6 +2,34 @@
 
 ## Installing Node
 
+Node.js is a hugely important advance in the development of JavaScript as a serious language for building software. We will talk more about why that is tomorrow, but for now, know that Node is a JavaScript interpreter (like the one in your web browser) that runs on the command line. We will be using Node throughout the class to manage our software and to assemble some of the more complex projects we will be working with later in the class.
+
+For today, after we walk through installing Node, we will be using Node because it is an easier way to focus on learning JavaScript than working with the browser.
+
+### OSX
+
+There are two main methods for installing Node on OSX: [Homebrew](#homebrew) and [NVM](#nvm). Both are very easy, but Homebrew gives you access to a wide array of useful tools besides just Node and is recommended.
+
+#### Homebrew
+
+If you do any kind of software development in OSX, I would strongly suggest that you *have* to have Homebrew in your life. It's a very simple FOSS ("Free and Open Source Software") package manager that let's you install either software Apple doesn't think you need or newer versions than the often very out-of-date tools Apple does provide.
+
+**Note**: if you do not have administrator access on your OSX computer, you cannot install Homebrew. See the section on [NVM](#nvm), below. 
+
+One thing Homebrew can install is Node. There is a one line install script that will walk you through the process on [Homebrew's website](https://brew.sh/).
+
+Once you have Homebrew installed, run `brew install node` to install Node.
+
+#### NVM
+
+If you can't get Homebrew installed (because, say, you do not have admin access on your computer), NVM (Node Version Manager) is an easy way to install Node in your home directory, without admin access.
+
+**Note**: if you use a non-Bourne compatible shell (Fish, ZSH), NVM is a nightmare. If you have no idea what the previous sentence means, you should be fine (NVM works out of the box on OSX, which uses Bash as the shell).
+
+Go [here](https://github.com/creationix/nvm#install-script) to learn about installing NVM.
+
+### Windows
+
 ## Learning NPM
 
 One major feature of Node.js is NPM (which is an independent repository not officially run by the Node.js team). NPM ("Node Package Manager") makes it easier to install a variety of software packages for Node.
@@ -42,7 +70,7 @@ for(var i=0; i < myNumberArray.length; i++) {
 }
 ```
 
-However, there is a move afoot in JavaScript to stop writing `for`, `while` and other iterative looping structures (we will talk about why and what is replacing them in a bit).
+However, there is a move afoot in JavaScript to stop writing `for`, `while` and other iterative looping structures ([we will talk about why and what is replacing them in a bit](#functional-array-manipulation)).
 
 Check out the [Mozilla Developer Network to learn more about all the methods you can use on `Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
