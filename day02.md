@@ -20,8 +20,8 @@ Isomorphic app development
 
 ## Webpack
 
-"Any sufficiently advanced technology is indistinguishable from magic."  
---- Arthur C. Clarke
+*"Any sufficiently advanced technology is indistinguishable from magic."*  
+*— Arthur C. Clarke*
 
 Webpack is probably made by a wizard or group of wizards. There are some fairly big names in web development who have gone on record saying they don't understand, completely, how it works.
 
