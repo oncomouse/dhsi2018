@@ -20,10 +20,10 @@ console.log(
 
 // Iterative:
 var input = [1,2,3,4,5];
-var output = input.slice(); // Copy the array;
+var output = [];
 for(var i=0; i < input.length; i++) {
 	var currentValue = input[i];
-	output[i] = currentValue * currentValue;
+	output.push(currentValue * currentValue); // .push() adds a value to the end of an array
 }
 console.log(output);
 
