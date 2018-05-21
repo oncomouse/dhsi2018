@@ -20,9 +20,17 @@ There are a few things you should familiarize yourself with before the first day
 
 ### Windows
 
-**Powershell** – The more powerful version of the Windows command line, called PowerShell, is what I assume you'll be using in this class. [Please read this article to find out about starting it](https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6). This blog post is also good about [how to customize and tweak Powershell](https://dev.to/itsjzt/what-can-you-do-with-powershell-for-developers--edh).
+**Command Line** – The Windows command line is different than UNIX. We will be using Windows lab machines in this class and if you use Windows for work, you may want to familiarize yourself with it. [This is a basic tutorial that is focused on Java development using the less powerful command line (cmd)](https://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html), but helpful nonetheless for learning basics of command line on Windows.
 
-**Scoop** – We won't be talking about [Scoop](https://scoop.sh/) in class (because it's a bit of a mess to install on our lab computers), but it's pretty great and can be useful for managing command line tools in Windows. To install, run the following in Powershell `iex (new-object net.webclient).downloadstring('https://get.scoop.sh')` (you may also need to run `Set-ExecutionPolicy RemoteSigned -scope CurrentUser` to set permissions).
+**Powershell** – PowerShell is the more powerful command line interface that many developers prefer. It is significantly more powerful than the older cmd.exe program, though a bit finicky. Scoop (see below) uses Powershell, so I'll encourage you to use it too. Here is Microsoft's ["Getting Started"](https://docs.microsoft.com/en-us/powershell/scripting/getting-started/getting-started-with-windows-powershell?view=powershell-6) article. [This blog post](https://dev.to/itsjzt/what-can-you-do-with-powershell-for-developers--edh) offers some tips on customizing PowerShell.
+
+**Scoop** – We won't be talking about [Scoop](https://scoop.sh/) in class (because it's a bit of a mess to install on our lab computers), but it's pretty great and can be useful for managing command line tools in Windows. To install, run the following in the Windows Command Line (<kbd>Win+R</kbd>, type "cmd", and press <kbd>Enter</kbd>):
+
+1. `powershell` (this loads the special command tool that Scoop needs to run)
+1. `iex (new-object net.webclient).downloadstring('https://get.scoop.sh')`
+1. (you may also need to run `Set-ExecutionPolicy RemoteSigned -scope CurrentUser` to set permissions).
+
+*Note:* I don't know much about Scoop, but it seems really cool. I should also note that sometimes, when you install things, you have to restart the command line to pick up the new programs.
 
 ## Installing Node
 
@@ -40,13 +48,19 @@ If you installed Scoop, you can run `scoop install nodejs` to get the newest ver
 
 If you are an administrator on your machine, you can install Node as you would install any other software. [Click here](https://nodejs.org/en/download/current/) and download the "Windows Installer". Running it is straight-forward.
 
+After you install, run the following from Powershell (<kbd>Win+R</kbd>, type "powershell", and press <kbd>Enter</kbd>): `$env:path += ";$env:appdata\npm` and then run `[Environment]::SetEnvironmentVariable("Path", $env:Path)`. This will add any tools we install globally with npm to your execution path.
+
 ## Installing Atom
+
+### macOS
+
+Download the installer from [https://atom.io](https://atom.io). Unzip the archive and drag Atom.app to your Applications folder. You can run it as you would any other program from that point (click "Yes" if it asks you to trust it).
 
 ### Windows
 
 Download the binary install from [https://atom.io](https://atom.io). When the installer finishes, run it and it will install Atom on your computer. *Note*: Atom installs locally, so if you configure it the way you want on one of our lab computers, you need to keep using that computer during the week.
 
-After running it, open Powershell (Win+R and type "powershell"). Copy the following command and paste it into the shell (you paste into powershell by right clicking): `$env:path += ';'+$env:localappdata+'\atom\bin'`. This will add the commands `apm` (for install Atom packages) and `atom` (for launching the editor from the command line) to your path. After testing that those commands work, run `setx PATH $env:path` to finalize your changes for future sessions.
+After running it, open Powershell (<kbd>Win+R</kbd>, type "powershell", and press <kbd>Enter</kbd>). Copy the following command and paste it into the shell (you paste into Command Line by right clicking): `$env:path += ";$env:localappdata\atom\bin"`. This will add the commands `apm` (for install Atom packages) and `atom` (for launching the editor from the command line) to your path. After testing that those commands work, run `[Environment]::SetEnvironmentVariable("Path", $env:Path)` to finalize your changes for future sessions.
 
 ## Configuring Atom
 
@@ -78,17 +92,35 @@ If you want to take the plunge into writing academic books and articles with Pan
 
 ### OSX
 
+Git is included with macOS but it is usually out-of-date. To install a fresh (and updatable) copy, run `brew install git`.
+
 ### Windows
 
-Download the binary installer from [](https://git-scm.com/download/win).
+If you are using Scoop, run `scoop install git`.
 
-After running it, open Powershell (Win+R and type "powershell"). Copy the following command and paste it into the shell (you paste into Powershell by right clicking): `$env:path += ';'+$env:localappdata+'\Programs\Git\bin'`. This will add the command `git` to your path. After testing that git runs, run `setx PATH $env:path` to finalize your changes for future sessions.
+Download the binary installer from [https://git-scm.com/download/win](https://git-scm.com/download/win). The install has a lot of options, but the defaults will generally be ok.
+
+After running it, open the Powershell (Win+R and type "powershell"). Copy the following command and paste it into the shell (you paste into Command Line by right clicking): `$env:path += ";$env:localappdata\Programs\Git\bin"`. This will add the command `git` to your path. After testing that git (type `git --version` into the command line and hit <kbd>Enter</kbd>) runs, run `[Environment]::SetEnvironmentVariable("Path", $env:Path)` to finalize your changes for future sessions.
 
 ## Learning NPM
 
 One major feature of Node.js is NPM (which is an independent repository not officially run by the Node.js team). NPM ("Node Package Manager") makes it easier to install a variety of software packages for Node.
 
-The version of this course you downloaded from GitHub contains a rudimentary NPM environment ([`package.json`](package.json)). Let's look at it now.
+The version of this course contains a rudimentary NPM environment ([`package.json`](package.json)). Let's look at it now.
+
+To get started working with course content, we need to clone a copy of the repository to our local machine (Git works by allowing local changes that you then "push" back to the remote origin repository). First, we need to create a `Projects` directory. All GitHub projects are, by convention, stored in the projects directory. To get back to your home directory from the terminal, type `cd`. Then type `mkdir Projects`. Then `cd Projects`. We are now in our new git repo directory.
+
+In your terminal, run `git clone https://github.com/oncomouse/dhsi2018`. If you didn't install Git earlier, visit [https://github.com/oncomouse/dhsi2018](https://github.com/oncomouse/dhsi2018) and click the green "Clone Or Download" button and click the "Download ZIP" link in the pop-up. Move that .zip file into Projects and extract it. On macOS, you can extract it by running `unzip dhsi2018-master.zip`. On Windows, and if you are using Scoop, you can run `scoop install unzip` followed by `unzip dhsi2018-master.zip` (otherwise, [click here for instructions](https://support.microsoft.com/en-us/help/4028088/windows-zip-and-unzip-files)).
+
+Now run `cd dhsi2018` to enter the repository.
+
+As a first step when cloning someone else's repository, it's good to remove the git metadata, so we don't accidentally mess with their master repo. In macOS, run `rm -rf .git` (& don't leave anything off, rm -rf is a dangerous command!). In Windows, run `rm .\.git -r -fo`.
+
+### Ok, let's finally do some JavaScript!
+
+That was a lot of stuff! Good for you getting everything set up! The nice thing about all of this is, unless you accidentally drop your laptop in a fountain, you'll never have to do any of that again. The magic of all of this stuff is the logic of DRY ("**D**on't **R**epeat **Y**ourself"), which underscores the lazy-web-developer ethos we are cultivating in this course. Struggle once, breeze through life forever after!
+
+Anyway, the first thing we should learn about NPM is using it to install packages. Our DHSI repository is a Node.js project with dependencies and everything.
 
 The main thing we will be doing in this class is using NPM to manage packages. To get started, run `npm install` in the repository you downloaded from GitHub.
 
