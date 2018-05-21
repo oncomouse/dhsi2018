@@ -1,4 +1,15 @@
 {
-	"presets": ["es2015", "stage-0"],
-	"plugins": ["transform-runtime", "ramda", "tailcall-optimization"]
+	"presets": [
+		[
+			"env",
+			{
+				"targets": {"node": "current"}
+			}
+		]
+	],
+	"plugins": [
+		"transform-class-properties",
+		"transform-runtime",
+		"ramda"
+	]
 }
