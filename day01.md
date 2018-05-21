@@ -27,13 +27,11 @@ There are a few things you should familiarize yourself with before the first day
 
 **Powershell** – PowerShell is the more powerful command line interface that many developers prefer. It is significantly more powerful than the older cmd.exe program, though a bit finicky. Scoop (see below) uses Powershell, so I'll encourage you to use it too. Here is Microsoft's ["Getting Started"](https://docs.microsoft.com/en-us/powershell/scripting/getting-started/getting-started-with-windows-powershell?view=powershell-6) article. [This blog post](https://dev.to/itsjzt/what-can-you-do-with-powershell-for-developers--edh) offers some tips on customizing PowerShell.
 
-**Scoop** – We won't be talking about [Scoop](https://scoop.sh/) in class (because it's a bit of a mess to install on our lab computers), but it's pretty great and can be useful for managing command line tools in Windows. To install, run the following in the Windows Command Line (<kbd>Win+R</kbd>, type "cmd", and press <kbd>Enter</kbd>):
+**Scoop** – Scoop is a package manager for Windows that works similar to Homebrew and looks pretty awesome. I want to use this in our course, but I'll level with you: I don't know enough about Windows to know if it will work on the lab machines, though the people who write Scoop insist that it will.
 
-1. `powershell` (this loads the special command tool that Scoop needs to run)
-1. `iex (new-object net.webclient).downloadstring('https://get.scoop.sh')`
-1. (you may also need to run `Set-ExecutionPolicy RemoteSigned -scope CurrentUser` to set permissions).
+Anyway, to install Scoop, run the following in Powershell (<kbd>Win+R</kbd>, type "powershell", and press <kbd>Enter</kbd>): `iex (new-object net.webclient).downloadstring('https://get.scoop.sh')` (you may also need to run `Set-ExecutionPolicy RemoteSigned -scope CurrentUser` to set permissions).
 
-*Note:* I don't know much about Scoop, but it seems really cool. I should also note that sometimes, when you install things, you have to restart the command line to pick up the new programs.
+*Note:* I don't know much about Scoop, but it seems really cool. I hope we can use it on the lab computers in Victoria!
 
 ## Installing Node
 
@@ -51,7 +49,7 @@ If you installed Scoop, you can run `scoop install nodejs` to get the newest ver
 
 If you are an administrator on your machine, you can install Node as you would install any other software. [Click here](https://nodejs.org/en/download/current/) and download the "Windows Installer". Running it is straight-forward.
 
-After you install, run the following from Powershell (<kbd>Win+R</kbd>, type "powershell", and press <kbd>Enter</kbd>): `$env:path += ";$env:appdata\npm` and then run `[Environment]::SetEnvironmentVariable("Path", $env:Path)`. This will add any tools we install globally with npm to your execution path.
+After you install, run the following from Powershell (<kbd>Win+R</kbd>, type "powershell", and press <kbd>Enter</kbd>): `$env:path += ";$env:appdata\npm"` and then run `[Environment]::SetEnvironmentVariable("Path", $env:Path)`. This will add any tools we install globally with npm to your execution path.
 
 ## Installing Atom
 
