@@ -1,10 +1,11 @@
-# Day 2: Digging Deeper
+# Day 2: JavaScript/CSS as Grown-up Languages
 
 ## Agenda
 
 1. [Why JavaScript? Why Now?](#why-javascript-why-now)
-1. [Accessing External Data](#accessing-external-data)
 1. [Webpack](#webpack)
+1. [SASS](#sass)
+1. [Accessing External Data](#accessing-external-data)
 
 ## Why JavaScript? Why Now?
 
@@ -16,7 +17,7 @@ Isomorphic app development
 
 ### Powerful Browsers!
 
-## Accessing External Data
+## SASS
 
 ## Webpack
 
@@ -64,3 +65,5 @@ Yes!
 However, the great thing about Webpack is that once you get something working once (ie. Babel support or CSS loading (see below)), it will *always* work for any project. I have a master `webpack.config.js` file in a repository on my laptop that I just copy and paste from every time I am building a new project. Webpack exemplifies the DRY (Don't Repeat Yourself) ethos of contemporary web development.
 
 ### Let's load some CSS!
+
+## Accessing External Data
