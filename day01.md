@@ -2,11 +2,14 @@
 
 ## Agenda
 
+1. [First Steps](#first-steps)
 1. [Installing Node](#installing-node)
+1. [Installing Atom](#installing-atom)
+1. [Configuring Atom](#configuring-atom)
 1. [Learning NPM](#learning-npm)
-1. [Editors](#editors)
 1. [JavaScript: The Good Stuff](#javascript-the-good-stuff)
 1. [ES2015: The Future is Now](#es2015-the-future-is-now)
+1. [Don't We Make Websites?](#dont-we-make-websites)
 
 ## First Steps
 
