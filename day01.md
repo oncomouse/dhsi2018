@@ -4,8 +4,25 @@
 
 1. [Installing Node](#installing-node)
 1. [Learning NPM](#learning-npm)
+1. [Editors](#editors)
 1. [JavaScript: The Good Stuff](#javascript-the-good-stuff)
 1. [ES2015: The Future is Now](#es2015-the-future-is-now)
+
+## First Steps
+
+There are a few things you should familiarize yourself with before the first day of class. I've divided it into macOS and Windows, as the requirements are different.
+
+### macOS
+
+**The Command Line** – We will be using a lot of command line software in this class. Hopefully, you are familiar with the basics of working with the UNIX command line. If you are not, Tracy Osborn [has a fun and quick introduction](https://drive.google.com/file/d/1_2LTtR6f5bFCC5wjFZc9ILA7vmru7ShK/view) that can get you up to speed!
+
+**Home Brew** – Installing command line tools on macOS can be a bit of a challenge, but thankfully, [Home Brew](https://brew.sh/) is a simple to understand and easy to use package manager for command line software on your Mac. I am going to assume you're using Home Brew on your Mac for this course, so make sure to be familiar with it. To install, copy the following command and paste it into your terminal: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. It will talk you through the rest.
+
+### Windows
+
+**Powershell** – The more powerful version of the Windows command line, called PowerShell, is what I assume you'll be using in this class. [Please read this article to find out about starting it](https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6). This blog post is also good about [how to customize and tweak Powershell](https://dev.to/itsjzt/what-can-you-do-with-powershell-for-developers--edh).
+
+**Scoop** – We won't be talking about [Scoop](https://scoop.sh/) in class (because it's a bit of a mess to install on our lab computers), but it's pretty great and can be useful for managing command line tools in Windows. To install, run the following in Powershell `iex (new-object net.webclient).downloadstring('https://get.scoop.sh')` (you may also need to run `Set-ExecutionPolicy RemoteSigned -scope CurrentUser` to set permissions).
 
 ## Installing Node
 
@@ -15,27 +32,57 @@ For today, after we walk through installing Node, we will be using Node because 
 
 ### OSX
 
-There are two main methods for installing Node on OSX: [Homebrew](#homebrew) and [NVM](#nvm). Both are very easy, but Homebrew gives you access to a wide array of useful tools besides just Node and is recommended.
-
-#### Homebrew
-
-If you do any kind of software development in OSX, I would strongly suggest that you *have* to have Homebrew in your life. It's a very simple FOSS ("Free and Open Source Software") package manager that let's you install either software Apple doesn't think you need or newer versions than the often very out-of-date tools Apple does provide.
-
-**Note**: if you do not have administrator access on your OSX computer, you cannot install Homebrew. See the section on [NVM](#nvm), below. 
-
-One thing Homebrew can install is Node. There is a one line install script that will walk you through the process on [Homebrew's website](https://brew.sh/).
-
-Once you have Homebrew installed, run `brew install node` to install Node.
-
-#### NVM
-
-If you can't get Homebrew installed (because, say, you do not have admin access on your computer), NVM (Node Version Manager) is an easy way to install Node in your home directory, without admin access.
-
-**Note**: if you use a non-Bourne compatible shell (Fish, ZSH), NVM is a nightmare. If you have no idea what the previous sentence means, you should be fine (NVM works out of the box on OSX, which uses Bash as the shell).
-
-Go [here](https://github.com/creationix/nvm#install-script) to learn about installing NVM.
+Run `brew install node` to install Node.
 
 ### Windows
+
+If you installed Scoop, you can run `scoop install nodejs` to get the newest version.
+
+If you are an administrator on your machine, you can install Node as you would install any other software. [Click here](https://nodejs.org/en/download/current/) and download the "Windows Installer". Running it is straight-forward.
+
+## Installing Atom
+
+### Windows
+
+Download the binary install from [https://atom.io](https://atom.io). When the installer finishes, run it and it will install Atom on your computer. *Note*: Atom installs locally, so if you configure it the way you want on one of our lab computers, you need to keep using that computer during the week.
+
+After running it, open Powershell (Win+R and type "powershell"). Copy the following command and paste it into the shell (you paste into powershell by right clicking): `$env:path += ';'+$env:localappdata+'\atom\bin'`. This will add the commands `apm` (for install Atom packages) and `atom` (for launching the editor from the command line) to your path. After testing that those commands work, run `setx PATH $env:path` to finalize your changes for future sessions.
+
+## Configuring Atom
+
+Atom is an extremely modular, customizable editor. You can change its appearance and its functionality by browsing and installing community maintained themes and packages.
+
+### Choosing a Theme
+
+Hitting <kbd>Control+Shift+P</kbd> on Windows or <kbd>⌘+Shift+P</kbd> on Mac will bring up the command bar in Atom. You can search for command by typing their name. For now, type "theme", scroll down until you see "Settings View: View Installed Themes", and press <kbd>Enter</kbd>.
+
+This brings up the theme selection window. You can choose a syntax theme and a UI theme (one controls the code, the other all the other elements). I use **Solarized Light** for syntax and have installed **Solarized Light UI** for UI. To install the theme, click "+ Install" in the Settings tab that opened when we launched the theme viewer. Select "Themes" next to the search bar, type "solarized-light-ui" in the search bar, and press <kbd>Enter</kbd>. Find "solarized-light-ui" and click the "Install" button in that result. "Solarized Light" will now be available in the UI selection widget in the **Theme** section of the Settings tab.
+
+If you want to explore themes, you can search for theme at: [https://atom.io/themes/](https://atom.io/themes/).
+
+In the next section, we'll also learn how to install Atom packages more easily.
+
+### Installing Packages
+
+Copy the following command into your command line and run it: `apm install Sublime-Style-Column-Selection autoclose-html autocomplete-modules color-picker editorconfig emmet emmet-jsx-props es6-javascript file-icons highlight-selected language-babel language-ejs multi-cursor-plus pigments script smart-tab-name`. This will install all the plugins you need to work with JavaScript, CSS, and SASS in Atom.
+
+`apm` is **A**tom **P**ackage **M**anager and it is the faster way to install any packages and/or themes into Atom. Packages are enabled by default, when installed.
+
+You can browse for more packages at: [https://atom.io/packages](https://atom.io/packages).
+
+### What Else Can I Do With Atom?
+
+If you want to take the plunge into writing academic books and articles with Pandoc Markdown (which you should, because it's awesome), Atom can be configured into an extremely powerful Markdown editor. Check out Scott Selisker's post on the topic, ["A Plain Text Workflow for Academic Writing with Atom"](http://u.arizona.edu/~selisker/post/workflow/) for more information.
+
+## (Optional) Installing Git
+
+### OSX
+
+### Windows
+
+Download the binary installer from [](https://git-scm.com/download/win).
+
+After running it, open Powershell (Win+R and type "powershell"). Copy the following command and paste it into the shell (you paste into Powershell by right clicking): `$env:path += ';'+$env:localappdata+'\Programs\Git\bin'`. This will add the command `git` to your path. After testing that git runs, run `setx PATH $env:path` to finalize your changes for future sessions.
 
 ## Learning NPM
 
@@ -86,7 +133,7 @@ Check out the [Mozilla Developer Network to learn more about all the methods you
 Objects are the other foundational data structure in JavaScript. Where an array is indexed by a sequential number, objects are indexed by either a number or a string. As such, they can be considered as a collection of key/value pairs.
 
 Objects are declared by surrounded curly braces (`{` and `}`), with key/value pairs written indicated in the form `<key>:<value>` and each pair separated by a comma. So:
-	
+
 ```javascript
 var myObject = {
 	foo: 'bar',
@@ -103,7 +150,7 @@ var myObject = {
 ```
 
 An object can be accessed in two ways: in the form `<variable>.<key>` or `<variable>[<key>]`. Here's an example to clarify from the above:
-	
+
 ```javascript
 myObject.foo === 'bar'; // true
 myObject['bar'] === 'baz'; // true
@@ -132,7 +179,7 @@ change(me, 'd');
 console.log(me);
 ```
 
-What do you expect to be the output? 
+What do you expect to be the output?
 
 Consider this example:
 
@@ -267,7 +314,7 @@ Value #5 of the array is: 5
 `Array.prototype.map` runs the supplied function on each member of an array and stores the returned value of the function in a new array at the same place as the passed old value. For instance:
 
 ```javascript
-[1,2,3,4,5].map(function(currentValue) { 
+[1,2,3,4,5].map(function(currentValue) {
 	return currentValue * currentValue;
 })
 ```
@@ -279,7 +326,7 @@ Also, why is it important that I keep emphasizing this is a *new* array?
 `Array.prototype.reduce` takes two parameters: a function and an initial value. The function can take up to four parameters `accumulator`, `currentValue`, `index`, and `array`. `accumulator` is first set to the initial value but then will be set to the output of the function. The final value of `accumulator` is returned by `Array.prototype.reduce`. For instance:
 
 ```javascript
-[1,2,3,4,5].reduce(function(accumulator, currentValue) { 
+[1,2,3,4,5].reduce(function(accumulator, currentValue) {
 	return accumulator + currentValue;
 }, 0)
 ```
@@ -397,7 +444,7 @@ if (!Array.prototype.forEach) {
     // 3. Let len be toUint32(lenValue).
     var len = O.length >>> 0;
 
-    // 4. If isCallable(callback) is false, throw a TypeError exception. 
+    // 4. If isCallable(callback) is false, throw a TypeError exception.
     // See: http://es5.github.com/#x9.11
     if (typeof callback !== 'function') {
       throw new TypeError(callback + ' is not a function');
@@ -526,7 +573,7 @@ What changes?
 		```
 		Why?
 		In future JavaScript implementations, `const` will be a more efficient variable form (but this isn't implemented yet).
-1. **Arrow function** syntax is a concise (and more functional) way of designating a function. The general syntax is 
+1. **Arrow function** syntax is a concise (and more functional) way of designating a function. The general syntax is
 	```javascript
 	(param1, param2, etc.) => {
 		<function body>
