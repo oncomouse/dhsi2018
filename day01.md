@@ -120,9 +120,7 @@ As a first step when cloning someone else's repository, it's good to remove the 
 
 That was a lot of stuff! Good for you getting everything set up! The nice thing about all of this is, unless you accidentally drop your laptop in a fountain, you'll never have to do any of that again. The magic of all of this stuff is the logic of DRY ("**D**on't **R**epeat **Y**ourself"), which underscores the lazy-web-developer ethos we are cultivating in this course. Struggle once, breeze through life forever after!
 
-Anyway, the first thing we should learn about NPM is using it to install packages. Our DHSI repository is a Node.js project with dependencies and everything.
-
-The main thing we will be doing in this class is using NPM to manage packages. To get started, run `npm install` in the repository you downloaded from GitHub.
+Anyway, the first thing we should learn about NPM is using it to install packages. Our DHSI repository is a Node.js project with dependencies and everything. To get started with the basic packages, run `npm install` in your terminal now.
 
 You just installed the packages required to run the examples for today (other days will have their own NPM environments, when we get to more complex software).
 
