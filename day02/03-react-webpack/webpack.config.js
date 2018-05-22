@@ -1,7 +1,8 @@
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
 
-const nodeEnv = process.env.NODE_ENV || 'development'
-const isProd = nodeEnv === 'production'
+const nodeEnv = process.env.NODE_ENV || 'development';
+const isProd = nodeEnv === 'production';
 
 var webpackConfig = {
   devtool: isProd ? 'hidden-source-map' : 'cheap-module-source-map'
@@ -11,7 +12,7 @@ var webpackConfig = {
 		]
   }
   , output: {
-    path: './build'
+    path: path.resolve('./build/')
     , filename: 'bundle.js'
   }
   , module: {
@@ -41,6 +42,6 @@ var webpackConfig = {
     contentBase: './app'
     , noInfo: false
   }
-}
+};
 
-module.exports = webpackConfig
+module.exports = webpackConfig;
