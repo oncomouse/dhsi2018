@@ -1,0 +1,34 @@
+{
+	"presets": [
+		["env", {
+			"modules": false,
+			"targets": {
+				"node": "current",
+				"browsers": "> 5%"
+			},
+			"useBuiltIns": true
+		}],
+		"react",
+		"stage-2"
+	],
+	"plugins": [
+		"ramda",
+		"tailcall-optimization"
+	],
+	"env": {
+		"test": {
+			"presets": [
+				["env",{
+					"targets": {
+						"node": "current",
+						"browsers": "> 5%"
+					},
+					"useBuiltIns": true
+				}]
+				, "react"
+				, "stage-2"
+			]
+			, "plugins": ["add-module-exports"]
+		}
+	}
+}
