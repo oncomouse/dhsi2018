@@ -1,8 +1,4 @@
 const webpack = require('webpack')
-const path = require('path')
-const fs = require('fs')
-
-const { ANALYZE } = process.env
 
 const nodeEnv = process.env.NODE_ENV || 'development'
 const isProd = nodeEnv === 'production'
@@ -15,7 +11,7 @@ var webpackConfig = {
 		]
   }
   , output: {
-    path: path.join(__dirname, 'build')
+    path: './build'
     , filename: 'bundle.js'
   }
   , module: {
