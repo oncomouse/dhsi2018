@@ -2,8 +2,9 @@
 
 ## Agenda
 
-1. [Don't We Make Websites?](#dont-we-make-websites)
 1. [Why JavaScript? Why Now?](#why-javascript-why-now)
+1. [Don't We Make Websites?](#dont-we-make-websites)
+1. [React](#react)
 1. [Webpack](#webpack)
 1. [SASS](#sass)
 1. [Accessing External Data](#accessing-external-data)
