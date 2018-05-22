@@ -85,6 +85,8 @@ Copy the following command into your command line and run it: `apm install Subli
 
 You can browse for more packages at: [https://atom.io/packages](https://atom.io/packages).
 
+*Also of note*: I use [Fira Code](https://github.com/tonsky/FiraCode), a really neat font with programming ligatures. If you know how to install fonts on your system, you might consider installing it as well, though that is totally optional.
+
 ### What Else Can I Do With Atom?
 
 If you want to take the plunge into writing academic books and articles with Pandoc Markdown (which you should, because it's awesome), Atom can be configured into an extremely powerful Markdown editor. Check out Scott Selisker's post on the topic, ["A Plain Text Workflow for Academic Writing with Atom"](http://u.arizona.edu/~selisker/post/workflow/) for more information.
