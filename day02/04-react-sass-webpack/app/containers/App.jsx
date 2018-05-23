@@ -1,7 +1,4 @@
 import React from 'react';
-import {
-    append
-} from 'ramda'
 import Button from '../components/Button'
 import Samples from '../components/Samples'
 
@@ -24,7 +21,7 @@ class App extends React.Component {
     addSample = ev => {
         ev.preventDefault();
         this.setState({
-            samples: append(randomString(), this.state.samples)
+            samples: [...this.state.samples, randomString()]
         });
     }
     resetSamples = ev => {
