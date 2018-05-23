@@ -1,0 +1,46 @@
+{
+  "name": "react-redux-webpack-starter",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oncomouse/react-redux-webpack-starter.git"
+  },
+  "main": "app/index.jsx",
+  "title": "Sample React-Redux App",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack"
+  },
+  "author": "Andrew Pilsch <apilsch@tamu.edu> (https://andrew.pilsch.com)",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-ramda": "^1.2.0",
+    "babel-plugin-tailcall-optimization": "^1.0.11",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-traverse": "^6.13",
+    "cross-env": "^5.1.3",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "extracted-loader": "^1.0.7",
+    "node-sass": "^4.9.0",
+    "prop-types": "^15.5.10",
+    "ramda": "^0.25",
+    "react": "^16",
+    "react-dom": "^16",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^3.5.1",
+    "whatwg-fetch": "^2.0.3",
+    "yarn-or-npm": "^2.0.4"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.11.0"
+  }
+}
