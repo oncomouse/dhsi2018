@@ -17,7 +17,11 @@ Isomorphic app development
 
 ### Script Ecology!
 
+So many cool tools!
+
 ### Powerful Browsers!
+
+iPhone has more power than a Cray 2 Supercomputer
 
 ## Don't We Make Websites?
 
