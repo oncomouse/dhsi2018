@@ -34,7 +34,6 @@
     "node-sass": "^4.9.0",
     "normalizr": "^3.2.4",
     "prop-types": "^15.5.10",
-    "ramda": "^0.25",
     "react": "^16",
     "react-dom": "^16",
     "react-redux": "^5.0.7",
@@ -44,8 +43,7 @@
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
     "webpack": "^3.5.1",
-    "whatwg-fetch": "^2.0.3",
-    "yarn-or-npm": "^2.0.4"
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "jsonplaceholder": "^0.3.3",

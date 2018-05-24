@@ -31,16 +31,13 @@
     "extracted-loader": "^1.0.7",
     "node-sass": "^4.9.0",
     "prop-types": "^15.5.10",
-    "ramda": "^0.25",
     "react": "^16",
     "react-dom": "^16",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
-    "webpack": "^3.5.1",
-    "whatwg-fetch": "^2.0.3",
-    "yarn-or-npm": "^2.0.4"
+    "webpack": "^3.5.1"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.11.0"
