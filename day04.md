@@ -12,7 +12,7 @@
 * Good for immutability!
 * Currying: `map(add(1))` returns a function that, when called, will add 1 to all elements in a list: `map(add(1))([1,2,3,4]) => [2,3,4,5]`
 	* *Why is this helpful?*
-* `compose`: create more powerful functions from small chunks: `map(compose(product(2), add(1)))([1,2,3,4]) => [4,6,8,10]`
+* `compose`: create more powerful functions from small chunks: `map(compose(multiply(2), add(1)))([1,2,3,4]) => [4,6,8,10]`
 	* *Why isn't this `[3,5,7,9]`?*
 * Is there an advantage to using `map` instead of `[].map`?
 	* [Fantasy Land](https://github.com/fantasyland/fantasy-land)
@@ -26,11 +26,11 @@ import {
 	add
 	, compose
 	, map
-	, product
+	, multiply
 } from 'ramda';
 
 const action = map(compose(
-	product(2)
+	multiply(2)
 	, add(1)
 ))
 
@@ -40,6 +40,10 @@ console.log(action([1,2,3,4]))
 This is also called point-free programming. It's considered to be clearer and more focused on what the program is doing, rather than how to implement it. This is functional programming. JavaScript can be, in addition to an OOP language, a functional language.
 
 We've seen some of JavaScript's functional programming features in both React (stateless components are pure functions) and Redux (reducers are pure functions).
+
+Let's look at [`day04/01-ramda`](day04/01-ramda); I put some more examples in there.
+
+There's a lot of cool and powerful tools in [Ramda](https://ramdajs.com/docs/), so take a look through their documentation.
 
 #### Side Note on Redux and Point Free
 
@@ -89,6 +93,14 @@ export default createReducer(initialState, actionMap);
 * *Why might this be preferable?*
 
 ### Code Quality
+
+Now that we know how to make code for React/Redux/Sass apps, how can we guarantee everyone writing readable, maintainable code?
+
+The discussion of code quality in organizations is an old one in professional programming and, thankfully, a variety of tools have emerged in recent years to automate much of the work involved in implementing style guides for professional programmers.
+
+Two I like and recommend are [ESLint](https://eslint.org/) for JavaScript and [StyleLint](https://stylelint.io/) for CSS/SASS. Calling program quality checkers "*Lint" dates back to work done in porting UNIX at Bell Labs, when Stephen C. Johnson wrote `lint` and named it after the undesirable fibers that have to be removed from sheep's wool. So there you go.
+
+
 
 ### Testing
 
