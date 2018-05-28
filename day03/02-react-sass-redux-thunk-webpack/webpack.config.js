@@ -6,6 +6,7 @@ const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
 
 var webpackConfig = {
+  mode: isProd ? 'production' : 'development',
   devtool: isProd
     ? 'hidden-source-map'
     : 'cheap-module-source-map',
