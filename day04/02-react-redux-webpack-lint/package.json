@@ -12,7 +12,10 @@
     "start": "npm-run-all --parallel webpack jsonplaceholder",
     "webpack": "webpack-dev-server",
     "jsonplaceholder": "node node_modules/jsonplaceholder/index",
-    "build": "cross-env NODE_ENV=production webpack"
+    "build": "cross-env NODE_ENV=production webpack",
+    "lint": "npm-run-all \"lint:* -- {@}\" --",
+    "lint:js": "eslint --ext .js --ext .jsx app/",
+    "lint:css": "stylelint \"app/stylesheets/**/*.scss\" --cache --cache-location \"./.stylelintcache\""
   },
   "author": "Andrew Pilsch <apilsch@tamu.edu> (https://andrew.pilsch.com)",
   "license": "ISC",
@@ -47,12 +50,15 @@
     "webpack": "^3.5.1"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.8.2",
     "jsonplaceholder": "^0.3.3",
     "npm-run-all": "^4.1.3",
+    "postcss-syntax": "^0.26.1",
     "stylelint": "^9.2.1",
     "stylelint-order": "^0.8.1",
     "stylelint-scss": "^3.1.0",
