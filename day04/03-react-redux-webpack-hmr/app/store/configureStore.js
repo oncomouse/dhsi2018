@@ -8,32 +8,31 @@ const noopReduxMiddleware = () => next => action => next(action);
 const loggerMiddleware = process.env.NODE_ENV !== 'production' ? require('redux-logger').default : noopReduxMiddleware;
 
 const persistConfig = {
-    key: APP_TITLE
-    , storage
+  key: APP_TITLE,
+  storage,
 };
 
 const reducer = persistCombineReducers(persistConfig, reducers);
 const initialState = {};
 const enhancer = applyMiddleware(
-    thunk
-    , loggerMiddleware
+  thunk
+  , loggerMiddleware,
 );
 const configureStore = () => {
-    const store = createStore(reducer, initialState, enhancer);
-    const persistor = persistStore(store);
-    
-    // HMR:
-    if (module.hot) {
-        module.hot.accept('../ducks/index', () => {
-            store.replaceReducer(
-                persistCombineReducers(require('../ducks/index').default)
-            );
-        });
-    }
-    return {
-        store
-        , persistor
-    };
-}
+  const store = createStore(reducer, initialState, enhancer);
+  const persistor = persistStore(store);
+
+  // HMR:
+  if (module.hot) {
+    module.hot.accept('../ducks/index', () => {
+      // eslint-disable-next-line global-require
+      store.replaceReducer(persistCombineReducers(require('../ducks/index').default));
+    });
+  }
+  return {
+    store,
+    persistor,
+  };
+};
 
 export default configureStore;

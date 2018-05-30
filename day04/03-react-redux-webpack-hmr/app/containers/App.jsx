@@ -6,35 +6,35 @@ import Samples from '../components/Samples';
 import { addSampleAction, resetAction } from '../ducks/Samples';
 
 const mapStateToProps = state => ({
-    samples: state.Samples
+  samples: state.Samples,
 });
 const mapDispatchToProps = dispatch => ({
-    addSample: () => dispatch(addSampleAction())
-    , resetSamples: () => dispatch(resetAction())
+  addSample: () => dispatch(addSampleAction()),
+  resetSamples: () => dispatch(resetAction()),
 });
 
 class App extends React.Component {
     static propTypes = {
-        samples: PropTypes.arrayOf(PropTypes.string).isRequired
-        , addSample: PropTypes.func.isRequired
-        , resetSamples: PropTypes.func.isRequired
+      samples: PropTypes.arrayOf(PropTypes.string).isRequired,
+      addSample: PropTypes.func.isRequired,
+      resetSamples: PropTypes.func.isRequired,
     }
-    addSample = ev => {
-        ev.preventDefault();
-        this.props.addSample();
+    addSample = (ev) => {
+      ev.preventDefault();
+      this.props.addSample();
     }
-    resetSamples = ev => {
-        ev.preventDefault();
-        this.props.resetSamples();
+    resetSamples = (ev) => {
+      ev.preventDefault();
+      this.props.resetSamples();
     }
     render() {
-        return (
-            <div>
-                <Samples samples={this.props.samples}/>
-                <Button action={this.addSample}>Click Me</Button>
-                <Button action={this.resetSamples}>Reset List</Button>
-            </div>
-        );
+      return (
+        <div>
+          <Samples samples={this.props.samples} />
+            <Button action={this.addSample}>Click Me</Button>
+              <Button action={this.resetSamples}>Reset List</Button>
+        </div>
+      );
     }
 }
 
