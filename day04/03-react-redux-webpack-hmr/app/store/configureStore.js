@@ -26,7 +26,7 @@ const configureStore = () => {
     if (module.hot) {
         module.hot.accept('../ducks/index', () => {
             store.replaceReducer(
-                makeReducer(require('../ducks/index').default)
+                persistCombineReducers(require('../ducks/index').default)
             );
         });
     }
