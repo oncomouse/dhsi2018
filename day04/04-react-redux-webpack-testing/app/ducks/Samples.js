@@ -1,4 +1,6 @@
+import { always, identity } from 'ramda';
 import PostAPI from '../api/Post';
+import createReducer from '../utilities/createReducer';
 
 // Symbols:
 const ADD_SAMPLE_DONE = Symbol('ADD_SAMPLE_DONE');
@@ -9,13 +11,10 @@ const ERROR = Symbol('ERROR');
 const MAX_POSTS = 99;
 
 const initialState = [];
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_SAMPLE_DONE: return [...state, action.payload.sample];
-    case RESET_STORE: return initialState;
-    case ERROR: return state;
-    default: return state;
-  }
+const actionMaps = {
+  [ADD_SAMPLE_DONE]: (state, action) => [...state, action.payload.sample],
+  [RESET_STORE]: always(initialState),
+  [ERROR]: identity,
 };
 
 // Action Creators:
@@ -42,4 +41,4 @@ export const addSampleAction = () => (dispatch) => {
     .catch(error => dispatch(errorAction(error)));
 };
 
-export default reducer;
+export default createReducer(initialState, actionMaps);

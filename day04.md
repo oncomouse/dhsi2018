@@ -124,4 +124,5 @@ You can customize your own ruleset or use a predefined one based on your prefere
 	- `store/configureStore.js`
 	- `.eslintrc.js`
 * Added optimizations and build stuff to `webpack.config.js`
+
 ### Testing
