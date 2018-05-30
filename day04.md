@@ -100,8 +100,28 @@ The discussion of code quality in organizations is an old one in professional pr
 
 Two I like and recommend are [ESLint](https://eslint.org/) for JavaScript and [StyleLint](https://stylelint.io/) for CSS/SASS. Calling program quality checkers "*Lint" dates back to work done in porting UNIX at Bell Labs, when Stephen C. Johnson wrote `lint` and named it after the undesirable fibers that have to be removed from sheep's wool. So there you go.
 
+We have some new stuff to look at in:
 
+* `.editorconfig`
+* `.eslintrc.js`
+* `.stylelintrc.js`
 
+When we have a sense of what's going on (and have run `npm install`), we can run `npm run lint` to see our Linters run (though they *both* won't, but see why by running it).
+
+You can customize your own ruleset or use a predefined one based on your preferences (or some combination). I actually use a modified version of AirBnB ([check it here](https://github.com/oncomouse/react-redux-webpack-starter/blob/master/.eslintrc.js)) and a slightly modified version of [stylelint-config-sass-guidelines](https://github.com/bjankord/stylelint-config-sass-guidelines/) ([check it here](https://github.com/oncomouse/react-redux-webpack-starter/blob/master/.stylelintrc.json)).
+
+### Hot Loading / HTML Webpack Plugin
+* HMR Changes
+	- `store/configureStore.js`
+	- `index.jsx`
+	- `components/utilities/ErrorBoundary.jsx` (*also talk about R.equals*)
+	- `webpack.config.js`
+* HTML Webpack Plugin
+	- Removed `index.html`
+	- Added `template/index.ejs`
+* Added `APP_TITLE`
+	- `webpack.config.js`
+	- `store/configureStore.js`
+	- `.eslintrc.js`
+* Added optimizations and build stuff to `webpack.config.js`
 ### Testing
-
-### Hot Loading
