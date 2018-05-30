@@ -1,0 +1,7 @@
+[*]
+indent_style = tab
+charset = utf-8
+
+[*.{js,css,scss,sass,jsx,json}]
+indent_style = space
+indent_size = 2
