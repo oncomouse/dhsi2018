@@ -1,7 +1,8 @@
 import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
-import { identity, times } from 'ramda';
+import sinon from 'sinon';
+import { always, identity, times } from 'ramda';
 import Samples from './Samples';
 
 const SAMPLE_LENGTH = 36;
@@ -35,5 +36,13 @@ describe('<Samples/>', () => {
     }, randomInteger(8, 24)); // eslint-disable-line no-magic-numbers
     wrapper.setProps({ samples });
     expect(wrapper.find('li')).to.have.length(Object.keys(samples).length);
+  });
+  it('should not error if all strings are the same', () => {
+    sinon.stub(console, 'error');
+    const r = randomString();
+    const samples = times(always(r), randomInteger(8, 24)); // eslint-disable-line no-magic-numbers
+    wrapper.setProps({ samples });
+    expect(console.error).to.have.callCount(0); // eslint-disable-line no-console
+    console.error.restore(); // eslint-disable-line no-console
   });
 });

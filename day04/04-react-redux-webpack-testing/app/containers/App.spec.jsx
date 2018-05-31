@@ -6,8 +6,8 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
-import App from './App';
 import post from 'fixtures/post.json';
+import App from './App';
 import { API_URL } from '../api/config';
 
 describe('<App/>', () => {
