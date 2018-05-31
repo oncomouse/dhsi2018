@@ -126,3 +126,24 @@ You can customize your own ruleset or use a predefined one based on your prefere
 * Added optimizations and build stuff to `webpack.config.js`
 
 ### Testing
+
+Having adequate tests for software is an important part of the development cycle. A lot of developers even advocate for [Test-Driven Development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development) as an approach. Because React is still relatively new (and a relatively new concept for app development in general), there are not a lot of agreed-upon best-practices for testing React/Redux apps. However, in [`day04/04-react-redux-webpack-testing`](day04/04-react-redux-webpack-testing) I've provided a reasonably solid testing framework for these apps. I should also note here that many people in the React community use [Jest](https://facebook.github.io/jest/), Facebook's testing framework, but I prefer the more established suite of tools:
+
+* [`mocha`](https://mochajs.org/) – This test suite provides the set-up and tear-down framework for testing, as well as the structure for the tests themselves
+* [`chai`](http://www.chaijs.com/) – This is an assertion library. Tests work by executing code and testing the output against a series of claims about what should happen.
+ 	* `chai` provides `assert` for doing TDD style assertions as well as `expect`/`should` for doing [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) style assertions, which are my preferred style.
+* [`sinon`](http://sinonjs.org/) – `sinon` is used for stubbing, spying, and mocking data. These three approaches replace existing code with methods that behave in particular ways and report on their behavior. I use a library called `fetch-mock` to mock the API behavior in a number of tests, but `sinon` can do this for *any* method.
+
+These three libraries are well-tested and have good support in JavaScript development, generally.
+
+Also, for specifically testing React apps, the general recommendation for simulating user input is [`enzyme`](https://github.com/airbnb/enzyme), which is overall pretty good, but I have found it (as have others) to be a bit flakey. It provides a head-less (console only) version of `mount` to mount React components and simulate UI events.
+
+Testing scripts:
+
+* `npm run mocha` – Run tests
+* `npm run test` – Run lint and tests
+* `npm run cover` – Run [Istanbul](https://istanbul.js.org/) to see how much of your [code is being covered](https://en.wikipedia.org/wiki/Code_coverage) by your tests.
+
+*Let's look at the tests*
+
+As a final note, I recently started using [Cypress](https://www.cypress.io/) to run tests (as it lets you do integration tests in the browser instead of w/ Enzyme), but I didn't feel comfortable enough with it to introduce it to you (also, I wasn't sure it would run in our lab). We can try playing around with it, if y'all are interested. Cypress uses the same mocha/chai/sinon setup, so it's pretty easy to adapt tests.
