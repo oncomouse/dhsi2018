@@ -7,11 +7,10 @@
     "url": "https://github.com/oncomouse/react-redux-webpack-starter.git"
   },
   "main": "app/index.jsx",
-  "title": "Testing React-Redux App",
+  "title": "My React-Redux App",
+  "homepage": "https://oncomouse.github.io/react-redux-app/",
   "scripts": {
-    "start": "npm-run-all --parallel webpack jsonplaceholder",
-    "webpack": "webpack-dev-server",
-    "jsonplaceholder": "node node_modules/jsonplaceholder/index",
+    "start": "webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack",
     "lint": "npm-run-all \"lint:* -- {@}\" --",
     "lint:js": "eslint --ext .js --ext .jsx app/",
@@ -74,7 +73,6 @@
     "istanbul-instrumenter-loader": "^3.0.1",
     "jsdom": "^11.11.0",
     "jsdom-global": "^3.0.2",
-    "jsonplaceholder": "^0.3.3",
     "mocha": "^5.2.0",
     "mocha-webpack": "^2.0.0-beta.0",
     "npm-run-all": "^4.1.3",
