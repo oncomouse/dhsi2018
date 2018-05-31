@@ -17,7 +17,7 @@
     "lint:css": "stylelint \"app/stylesheets/**/*.scss\" --cache --cache-location \"./.stylelintcache\"",
     "cover": "cross-env BABEL_ENV=test NODE_ENV=coverage nyc -r text -r lcov npm-run-all mocha",
     "mocha:watch": "npm-run-all \"mocha -- --watch\"",
-    "mocha": "mocha-webpack test.prepare.js \"app/**/*.spec.js\" \"app/**/*.spec.jsx\"",
+    "mocha": "mocha-webpack ",
     "test": "npm-run-all lint mocha"
   },
   "author": "Andrew Pilsch <apilsch@tamu.edu> (https://andrew.pilsch.com)",
