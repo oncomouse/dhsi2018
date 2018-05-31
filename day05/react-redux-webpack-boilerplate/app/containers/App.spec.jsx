@@ -40,7 +40,7 @@ describe('<App/>', () => {
     expect(wrapper.find('Button')).to.have.length(2);
   });
   // Integration Tests:
-  it('should call the API when the first button is clicked', done => {
+  it('should call the API when the first button is clicked', (done) => {
     wrapper.find('button').at(0).simulate('click');
     // Wait for fetch to finish:
     setTimeout(() => {
