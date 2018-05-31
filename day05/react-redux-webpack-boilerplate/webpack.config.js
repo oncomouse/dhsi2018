@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const url = require('url');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -15,10 +16,16 @@ const packageJSON = JSON.parse(
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
 
+// Extract PUBLIC_URL from either CLI or package.json:
+const PUBLIC_URL = process.env.PUBLIC_URL || (
+  isProd
+  && Object.prototype.hasOwnProperty.call(packageJSON, 'homepage')
+) ? packageJSON['homepage'] : undefined;
 // Extract APP_TITLE from package.json:
 const APP_TITLE = (
   Object.prototype.hasOwnProperty.call(packageJSON, 'title')
 ) ? packageJSON['title'] : 'My Sample App';
+const publicPath = PUBLIC_URL ? url.parse(PUBLIC_URL).pathname : '';
 
 var webpackConfig = {
   mode: isProd ? 'production' : 'development',
@@ -33,6 +40,7 @@ var webpackConfig = {
   , output: {
     path: path.resolve('./build/')
     , filename: 'bundle.js'
+    , publicPath
   }
   , module: {
     rules: [
@@ -187,6 +195,7 @@ var webpackConfig = {
         NODE_ENV: JSON.stringify(nodeEnv)
       }
       , 'APP_TITLE': JSON.stringify(APP_TITLE)
+      , PUBLIC_URL: JSON.stringify(PUBLIC_URL)
     })
     // Optimization & Build Plugins:
     , isProd ? new UglifyJSPlugin({
