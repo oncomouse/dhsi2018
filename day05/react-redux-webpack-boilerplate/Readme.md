@@ -37,10 +37,8 @@ In `package.json`, set the key `title` to the name of the application. This will
 
 Run `yarn build` or `npm run build` to build an optimized, production version of your app. It will be in the `build/` directory.
 
-If you add a `homepage` key to `package.json` and set it equal to the root URL of your application, the React app will set up a `ServiceWorker` to cache resources and greatly speed up your app.
+If you add a `homepage` key to `package.json` and set it equal to the root URL of your application, the path will be correct when you are ready to deploy.
 
 ## Debugging
-
-`npm run analyze`
 
 Also: `env NODE_ENV=production webpack --json > stats.json` and upload to [Webpack Visualizer](https://chrisbateman.github.io/webpack-visualizer/)
