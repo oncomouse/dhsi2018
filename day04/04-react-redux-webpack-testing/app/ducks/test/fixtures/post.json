@@ -1,0 +1,66 @@
+{
+  "userId": 5,
+  "id": 50,
+  "title": "repellendus qui recusandae incidunt voluptates tenetur qui omnis exercitationem",
+  "body": "error suscipit maxime adipisci consequuntur recusandae\nvoluptas eligendi et est et voluptates\nquia distinctio ab amet quaerat molestiae et vitae\nadipisci impedit sequi nesciunt quis consectetur",
+  "comments": [
+    {
+      "postId": 50,
+      "id": 246,
+      "name": "magnam earum qui eaque sunt excepturi",
+      "email": "Jaycee.Turner@euna.name",
+      "body": "quia est sed eos animi optio dolorum\nconsequatur reiciendis exercitationem ipsum nihil omnis\nbeatae sed corporis enim quisquam\net blanditiis qui nihil"
+    },
+    {
+      "postId": 50,
+      "id": 247,
+      "name": "vel aut blanditiis magni accusamus dolor soluta",
+      "email": "Wilbert@cheyenne.ca",
+      "body": "explicabo nam nihil atque sint aut\nqui qui rerum excepturi soluta quis et\net mollitia et voluptate minima nihil\nsed quaerat dolor earum tempore et non est voluptatem"
+    },
+    {
+      "postId": 50,
+      "id": 248,
+      "name": "voluptatum sint dicta voluptas aut ut",
+      "email": "Rebecca_Hessel@edna.net",
+      "body": "assumenda aut quis repellendus\nnihil impedit cupiditate nemo\nsit sequi laudantium aut voluptas nam dolore magnam\nminima aspernatur vero sapiente"
+    },
+    {
+      "postId": 50,
+      "id": 249,
+      "name": "quibusdam dignissimos aperiam sint commodi",
+      "email": "Christiana@lawrence.info",
+      "body": "non repudiandae dicta et commodi\nsint dolores facere eos nesciunt autem quia\nplaceat quaerat non culpa quasi dolores voluptas\ndolorum placeat non atque libero odit autem sunt"
+    },
+    {
+      "postId": 50,
+      "id": 250,
+      "name": "perferendis magnam natus exercitationem eveniet sunt",
+      "email": "Samara@shaun.org",
+      "body": "doloremque quae ratione cumque\nexcepturi eligendi delectus maiores necessitatibus veniam\nfugiat exercitationem consectetur vel earum\nquia illo explicabo molestiae enim rem deserunt et omnis"
+    }
+  ],
+  "user": {
+    "id": 5,
+    "name": "Chelsey Dietrich",
+    "username": "Kamren",
+    "email": "Lucio_Hettinger@annie.ca",
+    "address": {
+      "street": "Skiles Walks",
+      "suite": "Suite 351",
+      "city": "Roscoeview",
+      "zipcode": "33263",
+      "geo": {
+        "lat": "-31.8129",
+        "lng": "62.5342"
+      }
+    },
+    "phone": "(254)954-1289",
+    "website": "demarco.info",
+    "company": {
+      "name": "Keebler LLC",
+      "catchPhrase": "User-centric fault-tolerant solution",
+      "bs": "revolutionize end-to-end systems"
+    }
+  }
+}

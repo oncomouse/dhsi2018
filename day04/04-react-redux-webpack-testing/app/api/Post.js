@@ -1,8 +1,8 @@
 import { normalize, schema } from 'normalizr';
 import request from './utilities/request';
+import { API_URL } from '../api/config';
 
 const POSTS_PER_PAGE = 10;
-const API_URL = 'http://localhost:3000';
 
 const user = new schema.Entity('users');
 
