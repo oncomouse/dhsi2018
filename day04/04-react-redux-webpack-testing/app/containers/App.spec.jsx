@@ -32,15 +32,23 @@ describe('<App/>', () => {
   after(() => {
     fetchMock.restore();
   });
+  // Unit Tests:
   it('should render without crashing', () => {
     expect(App.prototype.componentDidMount).to.be.calledOnce;
   });
   it('should render two buttons', () => {
     expect(wrapper.find('Button')).to.have.length(2);
   });
-  it('should call the API when the first button is clicked', () => {
+  // Integration Tests:
+  it('should call the API when the first button is clicked', done => {
     wrapper.find('button').at(0).simulate('click');
-    expect(fetchMock.called()).to.be.true;
+    // Wait for fetch to finish:
+    setTimeout(() => {
+      expect(fetchMock.called()).to.be.true;
+      expect(store.getActions()).to.have.length(1);
+      expect(store.getActions()).to.have.nested.property('[0].payload.sample');
+      done();
+    }, 1);
   });
   it('should generate an action when second button is clicked', () => {
     wrapper.find('button').at(1).simulate('click');
