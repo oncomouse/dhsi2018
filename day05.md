@@ -11,7 +11,7 @@
 
 ## React Boilerplate
 
-*Talk about redux-persist-store*
+[https://github.com/oncomouse/react-redux-webpack-boilerplate](https://github.com/oncomouse/react-redux-webpack-boilerplate)
 
 ## Where To Next?
 
