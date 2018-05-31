@@ -7,6 +7,8 @@ import Samples from './Samples';
 
 const SAMPLE_LENGTH = 36;
 const STRING_LENGTH = 8;
+const MIN_SAMPLES = 8;
+const MAX_SAMPLES = 24;
 const randomString = () => Math.random()
   .toString(SAMPLE_LENGTH)
   .replace(/[^a-z]+/g, '')
@@ -33,14 +35,14 @@ describe('<Samples/>', () => {
     times(() => {
       const r = randomString();
       samples.push(r);
-    }, randomInteger(8, 24)); // eslint-disable-line no-magic-numbers
+    }, randomInteger(MIN_SAMPLES, MAX_SAMPLES));
     wrapper.setProps({ samples });
     expect(wrapper.find('li')).to.have.length(Object.keys(samples).length);
   });
   it('should not error if all strings are the same', () => {
     sinon.stub(console, 'error');
     const r = randomString();
-    const samples = times(always(r), randomInteger(8, 24)); // eslint-disable-line no-magic-numbers
+    const samples = times(always(r), randomInteger(MIN_SAMPLES, MAX_SAMPLES));
     wrapper.setProps({ samples });
     expect(console.error).to.have.callCount(0); // eslint-disable-line no-console
     console.error.restore(); // eslint-disable-line no-console
