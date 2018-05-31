@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 import App from './App';
-import post from '../ducks/test/fixtures/post.json';
+import post from 'fixtures/post.json';
 import { API_URL } from '../api/config';
 
 describe('<App/>', () => {
