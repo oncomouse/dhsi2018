@@ -1,5 +1,5 @@
-const path = require('path')
-const nodeExternals = require('webpack-node-externals')
+const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 const isCoverage = process.env.NODE_ENV === 'coverage';
 
@@ -38,6 +38,11 @@ config.externals = [nodeExternals()]
 config.devtool = "cheap-module-source-map"
 config.resolve = {
     extensions: ['.js', '.jsx']
+    , modules: [
+      path.resolve('./app/')
+      , path.resolve('./test/')
+      , path.resolve('./node_modules')
+    ]
 }
 
 module.exports = config

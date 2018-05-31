@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import fetchMock from 'fetch-mock';
 import reducer, { addSampleAction, resetAction } from './Samples';
-import post from './test/fixtures/post.json';
+import post from 'fixtures/post.json';
 import { API_URL } from '../api/config';
 
 describe('ducks/Samples', () => {
