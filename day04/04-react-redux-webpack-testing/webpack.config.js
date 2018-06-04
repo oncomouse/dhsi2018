@@ -155,7 +155,7 @@ var webpackConfig = {
         , js: ['bundle.js']
       }
       , title: APP_TITLE
-      , template: path.join('.','app','template','index.ejs')
+      , template: path.join('.','app','template','index.html')
       , chunksSortMode: 'dependency'
       , chunks: {
         head: {
