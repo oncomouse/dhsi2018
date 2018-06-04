@@ -571,7 +571,9 @@ If you ran `npm install` back at the beginning of today, you already have a work
 
 However, to run the Babel examples in this section, you will need a special version of Node (called "babel-node") to run them. To install this command on your system, run `npm install -g babel-cli` in your command line. The `-g` switch to `npm install` says to install the library globally. This makes any binaries the library installs (in this case `babel-node`) available in the global $PATH for your shell, so you can run them from the command line.
 
-(Normally, these binaries are all installed in `node_modules/.bin`, which may become useful in the future).
+*Note*: because Node is a *rapidly* changing landscape, I have to mention a new way to do this: in a recent upgrade, they added the command `npx` (which stands for **N**ode **P**acakge E**x**ecute). `npx` lets you run any binary command from a Node.js package whether it is installed or not (it will install if it isn't), so you could also just run `npx babel-node` to execute `babel-node`, but this will also work for *any* Node.js package that installs a binary.
+
+(If you don't use the `-g` flag, these binaries are all installed in `node_modules/.bin`, but we'll get to that in a few days).
 
 ### Big Changes
 
