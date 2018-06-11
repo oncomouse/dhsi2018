@@ -79,7 +79,7 @@ In the next section, we'll also learn how to install Atom packages more easily.
 
 ### Installing Packages
 
-Copy the following command into your command line and run it: `apm install Sublime-Style-Column-Selection autoclose-html autocomplete-modules color-picker editorconfig emmet emmet-jsx-props es6-javascript file-icons highlight-selected language-babel language-ejs multi-cursor-plus pigments script smart-tab-name`. This will install all the plugins you need to work with JavaScript, CSS, and SASS in Atom.
+Copy the following command into your command line and run it: `apm install Sublime-Style-Column-Selection autoclose-html autocomplete-modules color-picker editorconfig emmet emmet-jsx-props es6-javascript file-icons highlight-selected language-babel language-ejs multi-cursor-plus pigments script smart-tab-name linter-eslint linter-styleint linter-ui-default linter busy-signal intentions`. This will install all the plugins you need to work with JavaScript, CSS, and SASS in Atom.
 
 `apm` is **A**tom **P**ackage **M**anager and it is the faster way to install any packages and/or themes into Atom. Packages are enabled by default, when installed.
 
