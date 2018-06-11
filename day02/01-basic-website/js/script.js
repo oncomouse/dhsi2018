@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ev.preventDefault();
         var nodes = document.querySelectorAll('#MyForm ul li');
         if(nodes.length > 0) {
-            Array.prototype.slice.call(nodes).map(function(el) {
+            Array.from(nodes, function(el) {
                 el.parentNode.removeChild(el);
             })
         }
